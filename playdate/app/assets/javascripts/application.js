@@ -21,20 +21,3 @@
 //= require backbone/playdate
 //= require_tree .
 
-var studentView = new StudentView();
-
-$(document).ready(function(){
-	$('.add-student').on('click', function(){
-		var student = new Student({
-			first_name: $('.first_name-input').val(),
-			last_name: $('.last_name-input').val(),
-			gender: $('.gender-input').val(),
-			classroom: $('.classrom-input').val(),
-			image: $('.image-input').val(),
-			parent1: $('.parent1-input').val(),
-			parent2: $('.parent2-input').val()
-		});
-		console.log(student.toJSON());
-		classroom.add(student)
-	})
-})
