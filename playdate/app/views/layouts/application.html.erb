@@ -38,6 +38,18 @@
 
 <%= yield %>
 
+<script type="text/template" class="student-list-template">
+<td><span class="first_name">{{first_name}}></span></td>
+<td><span class="last_name">{{last_name}}</span></td>
+<td><span class="gender">{{gender}}</span></td>
+<td><span class="image">{{image}}</span></td>
+<td><span class="classroom">{{classroom}}</span></td>
+<td><span class="parent1">{{parent1}}</span></td>
+<td><span class="parent2">{{parent2}}</span></td>
+<td><button class="btn btn-warning edit-student">Edit</button></td>
+<td><button class="btn btn-danger delete-student">Delete</button></td>
+</script>
+
 </body>
 
 </html>
