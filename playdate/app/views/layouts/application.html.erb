@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Playdate</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+	<h1>PlayDate App</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Gender</th>
+				<th>Classroom</th>
+				<th>Image</th>
+				<th>Parent 1 Name</th>
+				<th>Parent 2 Name</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody class="students">
+		</tbody>
+	</table>
+
+<%= yield %>
+
+</body>
+
+</html>
