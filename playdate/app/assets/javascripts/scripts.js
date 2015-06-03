@@ -14,7 +14,14 @@ var Student = Backbone.Model.extend({
 
 // Backbone Collection
 
-var Students = Backbone.Collection.extend({});
+var Students = Backbone.Collection.extend({
+  initialize: function() {
+    console.log('New classroom');
+  },
+  model: Student,
+  url: '/students'
+
+});
 
 // instantiate two Students
 
@@ -47,13 +54,41 @@ var students = new Students();
 var StudentView = Backbone.View.extend({
 	tagName: 'tr',
 	initialize: function() {
+		this.listenTo(this.model, 'change', this.render);
 		this.template = _.template($('.student-list-template').html());
 	},
 	events: {
+		'click .add-student': 'add',
 		'click .edit-student': 'edit',
 		'click .update-student': 'update',
 		'click .cancel': 'cancel',
 		'click .delete-student': 'delete'
+	},
+
+	initialize: function(){
+		console.log('new StudentView');
+		this.render();
+	},
+
+	add: function() {
+		var data = {
+			first_name: $('.first_name-input').val(),
+      		last_name: $('.last_name-input').val(),
+      		gender: $('.gender-input').val(),
+      		classroom: $('.classroom-input').val(),
+      		image: $('.image-input').val(),
+      		parent1: $('.parent1-input').val(),
+      		parent2: $('.parent2-input').val()
+		};
+		this.collection.create(data, {success: function(){
+			$('.first_name-input').val("");
+	    	$('.last_name-input').val("");
+	    	$('.gender-input').val("");
+	    	$('.classroom-input').val("");
+	    	$('.image-input').val("");
+	    	$('.parent1-input').val("");
+	    	$('.parent2-input').val("")
+		}});
 	},
 	edit: function() {
 		$('.edit-student').hide();
@@ -78,6 +113,7 @@ var StudentView = Backbone.View.extend({
 		this.$('.parent2').html('<input type="text" class="form-control parent2-update" value="' + parent2 + '">');
 	},
 	update: function() {
+		console.log("Update!")
 		this.model.set('.first_name', $('.first_name-update').val());
 		this.model.set('last_name', $('.last_name-update').val());
 		this.model.set('gender', $('.gender-update').val());
@@ -93,11 +129,7 @@ var StudentView = Backbone.View.extend({
 		this.model.destroy();
 	},
 	render: function() {
-		console.log(students)
-		console.log("loggin this.model/toJSON")
-		console.log (this.model)
 		this.$el.html(this.template(this.model.toJSON()))
-		$("#someid").html("<div>" + this.model.gender + "</div>")
 		return this;
 	}
 });
@@ -127,33 +159,8 @@ var StudentsView = Backbone.View.extend({
 	}
 });
 
-var studentsView = new StudentsView();
+$(document).ready(function(){
 
-var ready;
-ready = function (){
-	$('.add-student').on('click', function() {
-		var student = new Student({
-			first_name: $('.first_name-input').val(),
-      		last_name: $('.last_name-input').val(),
-      		gender: $('.gender-input').val(),
-      		classroom: $('.classrom-input').val(),
-      		image: $('.image-input').val(),
-      		parent1: $('.parent1-input').val(),
-      		parent2: $('.parent2-input').val()
-		});
-		$('.first_name-input').val(""),
-    	$('.last_name-input').val(""),
-    	$('.gender-input').val(""),
-    	$('.classrom-input').val(""),
-    	$('.image-input').val(""),
-    	$('.parent1-input').val(""),
-    	$('.parent2-input').val("")
-    	console.log("loggin student tojson")
-		console.log(student.toJSON());
-		console.log("logging studnets")
-		console.log(students)
-		students.add(student);
-	})
-};
-$(document).ready(ready);
-$(document).on('page:load', ready);
+	
+
+});
