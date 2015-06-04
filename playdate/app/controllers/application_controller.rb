@@ -9,12 +9,16 @@ class ApplicationController < ActionController::Base
     render layout: 'application', text: ''
   end
 
-  helper_method :mailbox
+  helper_method :mailbox :conversation
   
   private
  
   def mailbox
     @mailbox ||= current_user.mailbox
+  end
+
+  def conversation
+  	@conversation ||= mailbox.conversations.find(params[:id])
   end
 
   protected
