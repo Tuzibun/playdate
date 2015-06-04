@@ -15,7 +15,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require underscore
-//= require chosen-jquery
 
 //= require bootstrap-sprockets
 
