@@ -10,15 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
 //= require jquery_ujs
-//= require chosen-jquery
 //= require turbolinks
 //= require underscore
+//= require chosen-jquery
+
 //= require bootstrap-sprockets
+
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/playdate
+
 //= require_tree .
 
