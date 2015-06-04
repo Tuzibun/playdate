@@ -9,6 +9,14 @@ class ApplicationController < ActionController::Base
     render layout: 'application', text: ''
   end
 
+  helper_method :mailbox
+  
+  private
+ 
+  def mailbox
+    @mailbox ||= current_user.mailbox
+  end
+
   protected
  
   def configure_permitted_parameters
