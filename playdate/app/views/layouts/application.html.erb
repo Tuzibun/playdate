@@ -2,81 +2,49 @@
 <html>
 <head>
   <title>Playdate</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link href='http://fonts.googleapis.com/css?family=Istok+Web:400,700' rel='stylesheet' type='text/css'>
-  <%= csrf_meta_tags %>
 </head>
 
 <body>
 	<div class="logo">
-		<%= image_tag(asset_path('playdate.tiff')) %>
+
+		<img src="https://c4.staticflickr.com/8/7780/17808278314_30a2b7cb6c_m.jpg" width="100" height="100" alt="playdate">
+
 	</div>
 
 	<div class="nav_bar">
-	    <ul class="menu">
+	    <ul class="nav navbar-nav pull-right">
 	      <li><%= link_to "Students", students_path, :class => "list" %></li>
 	      <li><%= link_to "Classrooms", classrooms_path, :class => "list" %></li>
 	      <li><%= link_to "Add A Student", new_student_path, :class => "list" %></li>
-	          <% if user_signed_in? %>
-	      <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "list" %></li>
-	          <% else %>
-	      <li><%= link_to 'Login', new_user_session_path, :class => "list" %></li>
-
+	      <% if user_signed_in? %>
+	        <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "list" %></li>
+	      <% else %>
+	        <li><%= link_to 'Login', new_user_session_path, :class => "list" %></li>
 	      <% end %>
+
+	      <% if user_signed_in? %>
+        	<li><%= link_to "Hello, #{current_user.name}", "#" %></li>
+        	<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+    	  <% else %>
+        	<li class="active"><%= link_to "Login", new_user_session_path %></li>
+        	<li><%= link_to "Sign up", new_user_registration_path %></li>
+    	  <% end %>
 	    </ul>
 	</div>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Gender</th>
-				<th>Classroom</th>
-				<th>Image</th>
-				<th>Parent 1 Name</th>
-				<th>Parent 2 Name</th>
-				<th>Actions</th>
-			</tr>
-			<tr>
-				<td><input class="form-control first_name-input"></td>
-				<td><input class="form-control last_name-input"></td>
-				<td><input class="form-control gender-input"></td>
-				<td><input class="form-control classroom-input"></td>
-				<td><input class="form-control image-input"></td>
-				<td><input class="form-control parent1-input"></td>
-				<td><input class="form-control parent2-input"></td>
-				<td><button class="btn btn-primary add-student">Add</button></td>
-			</tr>
-		</thead>
-		<tbody class="students-list">
-		</tbody>
-	</table>
+	<%= render 'layouts/nav' %>
 
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
+	<% flash.each do |key, value| %>
+	    <div class="text-center <%= flash_class(key) %>">
+	      <%= value %>
+	    </div>
+	<% end %>
 
-<%= yield %>
-
-<script type="text/template" class="student-list-template">
-	<td><span class="first_name"></span></td>
-	<td><span class="last_name"></span></td>
-	<td><span class="gender"></span></td>
-	<td><span class="image"></span></td>
-	<td><span class="classroom"></span></td>
-	<td><span class="parent1"></span></td>
-	<td><span class="parent2"></span></td>
-	<td><button class="btn btn-warning edit-student">Edit</button>
-	<button class="btn btn-danger delete-student">Delete</button>
-	<button class="btn btn-success update-student" style="display:none">Update</button> 
-	<button class="btn btn-danger cancel" style="display:none">Cancel</button>
-	</td>
-</script>
+<div class="content">
+	<%= yield %>
+</div>
 
 </body>
 

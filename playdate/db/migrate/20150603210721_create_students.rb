@@ -5,6 +5,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :last_name
       t.string :gender
       t.string :image
+      t.integer :classroom_id
       t.string :classroom
       t.string :parent1
       t.string :parent2
