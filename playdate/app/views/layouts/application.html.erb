@@ -2,10 +2,11 @@
 <html>
 <head>
   <title>Playdate</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link href='http://fonts.googleapis.com/css?family=Istok+Web:400,700' rel='stylesheet' type='text/css'>
-  <%= csrf_meta_tags %>
+
 </head>
 
 <body>
@@ -27,38 +28,12 @@
 	    </ul>
 	</div>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Gender</th>
-				<th>Classroom</th>
-				<th>Image</th>
-				<th>Parent 1 Name</th>
-				<th>Parent 2 Name</th>
-				<th>Actions</th>
-			</tr>
-			<tr>
-				<td><input class="form-control first_name-input"></td>
-				<td><input class="form-control last_name-input"></td>
-				<td><input class="form-control gender-input"></td>
-				<td><input class="form-control classroom-input"></td>
-				<td><input class="form-control image-input"></td>
-				<td><input class="form-control parent1-input"></td>
-				<td><input class="form-control parent2-input"></td>
-				<td><button class="btn btn-primary add-student">Add</button></td>
-			</tr>
-		</thead>
-		<tbody class="students-list">
-		</tbody>
-	</table>
-
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
+<%= render 'layouts/nav' %>
+ 
+<% flash.each do |key, value| %>
+    <div class="text-center <%= flash_class(key) %>">
+      <%= value %>
+    </div>
 <% end %>
 
 <%= yield %>
