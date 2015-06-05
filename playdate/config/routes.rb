@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :classrooms
   devise_for :users
   resources :students
   devise_for :admins
-  root to: 'application#index'
+  root to: 'welcome#index'
   resources :classrooms
 
   # mailbox folder routes

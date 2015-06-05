@@ -13,7 +13,8 @@
     <h3>Parent 2: <span><%= @student.parent2 %></span></h3>
     <h3>Classroom: <span><%= @student.classroom %></span></h3>
     <p style="text-align: center">
-      <button class="btn btn-primary message">Send a Message</button>
+      <%= link_to "Send Message", new_conversation_path, :id => "send-message", :class => "btn btn-primary" %>
+      
     </p>
     <p class="profile-actions", style="text-align: center">
       <%= link_to "Edit", edit_student_path(@student), :id => "edit", :class => "btn btn-warning edit-student" %>
