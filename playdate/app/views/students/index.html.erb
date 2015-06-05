@@ -12,8 +12,23 @@
       <th>Classroom</th>
       <th>Parent1</th>
       <th>Parent2</th>
-
+      <th>Actions</th>
     </tr>
+    <tr>
+      <%= form_for Student.new do |f| %>
+        
+        <td>
+          <%= f.text_field :first_name, :class => "form-control" %>
+        </td>
+        <td><input class="form-control last_name-input"></td>
+        <td><input class="form-control gender-input"></td>
+        <td><input class="form-control classroom-input"></td>
+        <td><input class="form-control image-input"></td>
+        <td><input class="form-control parent1-input"></td>
+        <td><input class="form-control parent2-input"></td>
+        <td><button class="btn btn-primary add-student"><%= link_to 'New Student', new_student_path %>Add</button></td>
+        <% end %>
+      </tr>
   </thead>
 
   <tbody>
@@ -35,5 +50,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Student', new_student_path %>
