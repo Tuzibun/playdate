@@ -16,17 +16,30 @@
     </tr>
     <tr>
       <%= form_for Student.new do |f| %>
-        
         <td>
           <%= f.text_field :first_name, :class => "form-control" %>
         </td>
-        <td><input class="form-control last_name-input"></td>
-        <td><input class="form-control gender-input"></td>
-        <td><input class="form-control classroom-input"></td>
-        <td><input class="form-control image-input"></td>
-        <td><input class="form-control parent1-input"></td>
-        <td><input class="form-control parent2-input"></td>
-        <td><button class="btn btn-primary add-student"><%= link_to 'New Student', new_student_path %>Add</button></td>
+        <td>
+          <%= f.text_field :last_name, :class => "form-control" %>
+        </td>
+        <td>
+          <%= f.text_field :gender, :class => "form-control" %>
+        </td>
+        <td>
+          <%= f.text_field :image, :class => "form-control" %>
+        </td>
+        <td>
+          <%= f.text_field :classroom, :class => "form-control" %>
+        </td>
+        <td>
+          <%= f.text_field :parent1, :class => "form-control" %>
+        </td>
+        <td>
+          <%= f.text_field :parent2, :class => "form-control" %>
+        </td>
+        <td>
+          <%= f.submit :class => "btn btn-primary add-student "%>
+        </td>
         <% end %>
       </tr>
   </thead>
@@ -41,9 +54,16 @@
         <td><%= student.classroom %></td>
         <td><%= student.parent1 %></td>
         <td><%= student.parent2 %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td>
+          <%= link_to "Edit".html_safe, edit_student_path(student), :id => "edit", :class => "btn btn-warning edit-student" %>
+        </td>
+
+          <%= link_to 'Show', student %>
+          <%= link_to 'Edit', edit_student_path(student) %>
+          <%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+
       </tr>
     <% end %>
   </tbody>
