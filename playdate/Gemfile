@@ -1,11 +1,14 @@
 source 'https://rubygems.org'
 
+gem "better_errors"
+gem "binding_of_caller"
 gem "devise"
 gem "rails-backbone"
 gem 'handlebars_assets'
 gem 'underscore-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'mailboxer', :git => 'git://github.com/div/mailboxer.git', :branch => 'rails42-foreigner'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
