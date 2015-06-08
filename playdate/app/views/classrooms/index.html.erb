@@ -9,19 +9,7 @@
       <th># of students</th>
       <th>Actions</th>
     </tr>
-    <tr>
-      <%= form_for Classroom.new do |f| %>
-        <td></td>
-        <td>
-          <%= f.text_field :name, :class => "form-control" %>
-        </td>
-        <td><%= f.text_field :teacher, :class => "form-control" %></td>
-        <td></td>
-        <td style="text-align: center">
-          <%= f.submit :class => "btn btn-primary add-classroom "%>
-        </td>
-        <% end %>
-      </tr>
+    <%= render partial: 'form' %>
   </thead>
 
   <tbody>
